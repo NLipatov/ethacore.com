@@ -1,0 +1,67 @@
+name: Deploy Next (static) to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'app/**'
+      - 'public/**'
+      - 'next.config.*'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'globals.css'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build and export Next
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (next build + export)
+        run: |
+          npm run build
+          npx --yes next export
+
+      - name: Prepare Pages artifact (CNAME + .nojekyll)
+        run: |
+          echo "ethacore.com" > out/CNAME
+          echo > out/.nojekyll
+          ls -la out | sed -n '1,200p'
+
+      - name: Upload artifact for Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
