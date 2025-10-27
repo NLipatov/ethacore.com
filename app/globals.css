@@ -9,7 +9,7 @@ html, body {
     background: #000;
     color: #e0e0e0;
     font-family: var(--font-jetbrains), "SF Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
-    overflow: hidden;
+    overflow: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -17,10 +17,13 @@ html, body {
 /* Layout */
 .landing {
     width: 100vw;
-    height: 100vh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0);
+    padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 2.25rem);
 }
 
 .content {
@@ -29,6 +32,8 @@ html, body {
     align-items: center;
     gap: 4rem;
     text-align: center;
+    padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 2rem);
+    box-sizing: border-box;
 }
 
 /* Logo */
@@ -121,4 +126,9 @@ html, body {
 @keyframes appear {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-height: 720px), (orientation: landscape) {
+    .landing { align-items: flex-start; padding-top: calc(env(safe-area-inset-top, 8px) + 1.25rem); }
+    .content { padding-top: 1.25rem; }
 }
