@@ -8,12 +8,6 @@ const products = [
         description:
             "VPN built in Go — fast, cross-platform, transport-agnostic (UDP, TCP, WebSocket).",
     },
-    {
-        name: "Nilcore",
-        url: "https://nilcore.com",
-        description:
-            "Smart link routing that adapts to every visitor based on device, geo, time, and traffic signals.",
-    },
 ];
 
 export default function Products() {
