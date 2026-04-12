@@ -8,6 +8,11 @@ const products = [
         description:
             "VPN built in Go — fast, cross-platform, transport-agnostic (UDP, TCP, WebSocket).",
     },
+    {
+        name: "snake",
+        url: "https://snake.ethacore.com",
+        description: "Classic Snake game written in Rust with a WASM-powered web frontend"
+    }
 ];
 
 export default function Products() {
