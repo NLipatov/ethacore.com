@@ -6,7 +6,7 @@ const products = [
         name: "TunGo",
         url: "https://tungo.ethacore.com",
         description:
-            "VPN built in Go — fast, cross-platform, transport-agnostic (UDP, TCP, WebSocket).",
+            "VPN protocol built in Go — fast, cross-platform, transport-agnostic (UDP, TCP, WebSocket).",
     },
     {
         name: "snake",
