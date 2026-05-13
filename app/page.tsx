@@ -3,7 +3,7 @@ import Products from "@/app/components/products";
 export default function Home() {
     return (
         <main className="landing">
-            <section className="hero" aria-label="Ethacore">
+            <section className="hero">
                 <div className="content">
                     <div className="logo strong">η</div>
                     <div className="tagline">
