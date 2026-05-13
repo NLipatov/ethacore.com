@@ -6,12 +6,12 @@ const products = [
         name: "TunGo",
         url: "https://tungo.ethacore.com",
         description:
-            "VPN protocol built in Go — fast, cross-platform, transport-agnostic (UDP, TCP, WebSocket).",
+            "Lightweight VPN in Go with Noise IK + ChaCha20-Poly1305, CLI/TUI setup, and UDP/TCP/WebSocket transports.",
     },
     {
         name: "snake",
         url: "https://snake.ethacore.com",
-        description: "Classic Snake game written in Rust with a WASM-powered web frontend"
+        description: "Classic Snake game in Rust with terminal CLI and WebAssembly-powered web versions."
     }
 ];
 
